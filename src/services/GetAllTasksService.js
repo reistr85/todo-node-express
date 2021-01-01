@@ -1,15 +1,10 @@
 const Task = require('../models/Task');
+const TaskRepository = require('../repositories/TaskRepository');
 
-const execute = () => {
-  
-  const tasks = Task.findAll({
-    include: { 
-      association: 'user',
-      attributes: ['name', 'email'],
-    }
-  });
-
-  return tasks;
+class GetAllTasksService extends TaskRepository {
+  execute(){
+    return this.findAll();
+  }
 }
 
-module.exports = execute;
+module.exports = GetAllTasksService;

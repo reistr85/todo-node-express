@@ -3,6 +3,8 @@ const HomeController = require("../controllers/HomeController");
 
 const routes = express.Router();
 
-routes.get("/", HomeController.index);
+const homeController = new HomeController();
+
+routes.get("/", homeController.index);
 
 module.exports = routes;

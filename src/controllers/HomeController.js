@@ -1,11 +1,20 @@
 
 const GetAllTasksService = require('../services/GetAllTasksService');
 
-module.exports = {
-  async index(req, res) {
+var getAllTasksService;
 
-    const tasks = await GetAllTasksService();
+class HomeController {
+
+  constructor(){
+    getAllTasksService = new GetAllTasksService();
+  }
+
+  async index(req, res) {
+    const tasks = await getAllTasksService.execute();
 
     return res.json(tasks);
   }
+
 }
+
+module.exports = HomeController;
